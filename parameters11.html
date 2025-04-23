@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Economic Parameters - QYMBAT-AI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      line-height: 1.6;
+      color: #1a1a1a;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Parameters Page */
+    .parameters {
+      max-width: 800px;
+      width: 100%;
+      margin-top: 60px;
+      padding: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .parameters h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #2d5884;
+    }
+
+    .parameters ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .parameters li {
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlide 0.5s ease forwards;
+      transition: background-color 0.3s ease;
+    }
+
+    .parameters li:hover {
+      background-color: #f0f4f8;
+    }
+
+    .parameters li:nth-child(1) { animation-delay: 0.1s; }
+    .parameters li:nth-child(2) { animation-delay: 0.2s; }
+    .parameters li:nth-child(3) { animation-delay: 0.3s; }
+    .parameters li:nth-child(4) { animation-delay: 0.4s; }
+    .parameters li:nth-child(5) { animation-delay: 0.5s; }
+    .parameters li:nth-child(6) { animation-delay: 0.6s; }
+    .parameters li:nth-child(7) { animation-delay: 0.7s; }
+    .parameters li:nth-child(8) { animation-delay: 0.8s; }
+    .parameters li:nth-child(9) { animation-delay: 0.9s; }
+    .parameters li:nth-child(10) { animation-delay: 1s; }
+    .parameters li:nth-child(11) { animation-delay: 1.1s; }
+    .parameters li:nth-child(12) { animation-delay: 1.2s; }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .parameters li a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+  <section class="parameters">
+    <h2>The Role and Statistics of Economic Parameters</h2>
+    <ul>
+      <li><a href="pension.html">Pension</a></li>
+      <li><a href="wage.html">Wage</a></li>
+      <li><a href="mci.html">MCI</a></li>
+      <li><a href="gdp.html">GDP</a></li>
+      <li><a href="ppi.html">PPI</a></li>
+      <li><a href="cpi.html">CPI</a></li>
+      <li><a href="exchange.html">Exchange Rate</a></li>
+      <li><a href="interest_rate.html">Interest Rate</a></li>
+      <li><a href="level_of_literacy.html">Level of Literacy</a></li>
+      <li><a href="unemployment.html">Unemployment</a></li>
+      <li><a href="external_debt.html">External Debt</a></li>
+      <li><a href="corruption.html">Corruption Rate</a></li>
+    </ul>
+  </section>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exchange Rate - QYMBAT-AI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #8b6ddc;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #e6d3eb;
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .container h2 {
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon img {
+      width: 90px;
+      height: auto;
+    }
+
+    .country-box {
+      background-color: #eee5e5;
+      padding: 12px;
+      border-radius: 6px;
+      width: 80%;
+      margin: 0 auto 30px;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .next-button {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .next-button:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Exchange Rate</h2>
+    <div class="icon">
+      <img src="exchange.png" alt="Exchange Rate Icon">
+    </div>
+    <div class="next-button" onclick="goToData()">Next</div>
+  </div>
+
+  <script>
+    function goToData() {
+      window.location.href = "exchange_rate_kazakhstan.html";
+    }
+  </script>
+</body>
+</html>

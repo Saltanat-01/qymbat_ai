@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup - QYMBAT-AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      border-radius: 20px;
+    }
+    .flags img {
+      display: block;
+      width: 100px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .form-box {
+      background-color: #f9f9f9;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      width: 300px;
+    }
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #ddd;
+      font-size: 15px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #2a74d9;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #1a5ac2;
+    }
+    .google {
+      background-color: #1c1c1c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .footer-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .footer-text a {
+      color: #2a74d9;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flags">
+      <img src="https://flagcdn.com/w320/kz.png" alt="Kazakhstan">
+      <img src="https://flagcdn.com/w320/uz.png" alt="Uzbekistan">
+      <img src="https://flagcdn.com/w320/ru.png" alt="Russia">
+      <img src="https://flagcdn.com/w320/us.png" alt="USA">
+    </div>
+    <div class="form-box">
+      <h2>Create an account</h2>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button class="btn" onclick="createAccount()">Create account</button>
+      <button class="btn google"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="G" width="20">Continue with Google</button>
+      <div class="footer-text">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createAccount() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+      const encodedEmail = encodeURIComponent(email);
+      window.location.href = `main.html?email=${encodedEmail}&success=true`;
+    }
+  </script>
+</body>
+</html>

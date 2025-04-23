@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gasoline Forecast | QYMBAT-AI</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .country-switch {
+      margin-bottom: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .country-switch select {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 900px;
+      height: 1100px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⛽ Gasoline Forecast (2025–2029)</h1>
+
+  <div class="country-switch">
+    <label for="country-select">🌍 Choose country:</label>
+    <select id="country-select" onchange="switchCountry(this)">
+      <option value="gasoline_2025_29.html">🇰🇿 Kazakhstan</option>
+      <option value="gasoline_forecast_russia.html">🇷🇺 Russia</option>
+      <option value="gasoline_forecast_uzb.html">🇺🇿 Uzbekistan</option>
+      <option value="gasoline_forecast_usa.html">🇺🇸 USA</option>
+    </select>
+  </div>
+
+  <!-- iframe loads the default forecast -->
+  <iframe id="forecast-frame" src="gasoline_2025_29.html"></iframe>
+
+  <script>
+    function switchCountry(select) {
+      const iframe = document.getElementById("forecast-frame");
+      iframe.src = select.value;
+    }
+  </script>
+
+</body>
+</html>

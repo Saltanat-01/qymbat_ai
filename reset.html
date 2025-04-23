@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reset Password</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 60px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eaf1f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .reset-box {
+      background-color: #fefefe;
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      width: 500px;
+      border: 2px solid #cbd5e1;
+      position: relative;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .lock-icon {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ddd;
+      font-size: 14px;
+    }
+
+    .logout-btn {
+      margin-top: 35px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .logout-btn a button {
+      background-color: #2a74d9;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn a button:hover {
+      background-color: #1c5fc2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reset-box">
+    <div class="lock-icon">🔒</div>
+    <h2>Change the password</h2>
+
+    <label>Old password</label>
+    <input type="password" placeholder="•••••••••••••••">
+
+    <label>New password</label>
+    <input type="password" placeholder="•••••••••••••••">
+
+    <label>Re-enter the new password</label>
+    <input type="password" placeholder="•••••••••••••••">
+
+    <div class="logout-btn">
+      <a href="totalcode.html">
+        <button>Log out</button>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

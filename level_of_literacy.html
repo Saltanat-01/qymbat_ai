@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Level of Literacy - QYMBAT-AI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #2e8999;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .literacy-container {
+      background-color: #53a3ab;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .literacy-container h2 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .literacy-icon {
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .literacy-icon img {
+      width: 90px;
+      height: auto;
+    }
+
+    .select-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 80%;
+      margin-bottom: 30px;
+    }
+
+    .select-wrapper select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #f5eaea;
+      font-size: 16px;
+      appearance: none;
+    }
+
+    .select-wrapper .arrow {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .next-button {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .next-button:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="literacy-container">
+    <h2>Level of literacy</h2>
+    <div class="literacy-icon">
+      <img src="level_of_literacy.png" alt="Literacy Icon">
+    </div>
+    <div class="next-button" onclick="goToChart()">Next</div>
+  </div>
+
+  <script>
+    function goToChart() {
+      window.location.href = `level_of_literacy_kazakhstan.html`;
+    }
+  </script>
+</body>
+</html>

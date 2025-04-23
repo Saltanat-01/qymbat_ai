@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gross domestic product- QYMBAT-AI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #4E7C74; /* ашық көк фон */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .background-box {
+      background-color: #CB6060; /* қызғылт қанық фон */
+      width: 600px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .container {
+      background-color: #CB6060; /* қыша түсі */
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .container h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .icon {
+      margin: 0 auto 20px auto;
+    }
+
+    .icon img {
+      width: 80px;
+      height: auto;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .next-button {
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .next-button:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Gross domestic product</h2>
+    <div class="icon">
+      <img src="gdp.png" alt="GDP Icon">
+    </div>
+    <div class="next-button" onclick="goToData()">Next</div>
+  </div>
+
+  <script>
+    function goToData() {
+      window.location.href = "gdp_kazakhstan.html";
+    }
+  </script>
+</body>
+</html>
