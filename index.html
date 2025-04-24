@@ -208,12 +208,44 @@ button:hover {
   color: inherit;
   padding: 10px 15px;
 }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+.logo-container {
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 100px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+
 
 
   </style>
 </head>
 <body>
 <div class="main" id="mainPage">
+  <div class="logo-container">
+    <img src="logosdu.png" alt="QYMBAT-AI Logo" class="logo">
+  </div>
 <nav>
 <a href="main.html">📂Main Page</a>
 <a href="parameters11.html">📄Statistics</a>
