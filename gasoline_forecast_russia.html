@@ -65,23 +65,23 @@
 
   <div class="card">
     <h1>Russia — Gasoline Price Forecast (2025–2029)</h1>
-    <div class="price">Forecast for 2025: ≈ 55.76 ₽</div>
+    <div class="price">Forecast for 2025: ≈ 53 ₽</div>
 
     <canvas id="gasolineChart" width="600" height="300"></canvas>
 
     <div class="formula">
       📌 Linear regression formula used:<br>
-      <code>y = 1.8972 * x - 3765.02</code>
+      <code>y = 1.90136 * x - 3797.28</code>
     </div>
 
     <div class="forecast">
       📅 Forecasted values:
       <ul>
-        <li>2025: <b>55.76 ₽</b></li>
-        <li>2026: <b>57.66 ₽</b></li>
-        <li>2027: <b>59.56 ₽</b></li>
-        <li>2028: <b>61.46 ₽</b></li>
-        <li>2029: <b>63.36 ₽</b></li>
+        <li>2025: <b>52.97 ₽</b></li>
+        <li>2026: <b>54.88 ₽</b></li>
+        <li>2027: <b>56.78 ₽</b></li>
+        <li>2028: <b>58.68 ₽</b></li>
+        <li>2029: <b>60.58 ₽</b></li>
       </ul>
     </div>
 
@@ -91,6 +91,7 @@
       By substituting <code>x = 2025...2029</code> into the equation, we obtain predicted prices for each year.
     </div>
   </div>
+
   <script>
     const ctx = document.getElementById('gasolineChart').getContext('2d');
 
@@ -107,28 +108,51 @@
       39.43, 43.13, 43.23, 46.44, 47.21, 49.13, 53
     ];
 
-    const regression = years.map(year => 1.8972 * year - 3765.02);
+    // Фактические + пустые значения для будущего
+    const combinedPrices = [...actualPrices, ...new Array(5).fill(null)];
+
+    // Прогноз (только 2025–2029)
+    const forecastPrices = [...new Array(21).fill(null), 
+      1.90136 * 2025 - 3797.28,
+      1.90136 * 2026 - 3797.28,
+      1.90136 * 2027 - 3797.28,
+      1.90136 * 2028 - 3797.28,
+      1.90136 * 2029 - 3797.28
+    ];
+
+    // Полная линия регрессии (от 2004 до 2029)
+    const regressionLine = years.map(x => 1.90136 * x - 3797.28);
 
     const data = {
       labels: years,
       datasets: [
         {
-          label: 'Historical Gasoline Prices (Russia)',
-          data: [...actualPrices, null, null, null, null, null],
+          label: 'Actual Gasoline Prices',
+          data: combinedPrices,
           borderColor: '#4e73df',
           backgroundColor: 'rgba(78, 115, 223, 0.1)',
           fill: true,
-          tension: 0.4,
+          tension: 0.3,
           pointRadius: 4
         },
         {
-          label: 'Forecast Line (Regression)',
-          data: regression,
+          label: 'Forecasted Prices',
+          data: forecastPrices,
           borderColor: '#e74a3b',
           borderDash: [4, 4],
+          backgroundColor: 'transparent',
+          fill: false,
+          pointRadius: 4,
+          tension: 0.3
+        },
+        {
+          label: 'Regression Line (2004–2029)',
+          data: regressionLine,
+          borderColor: '#ff8c00',
+          borderDash: [6, 3],
           fill: false,
           pointRadius: 0,
-          tension: 0.1
+          tension: 0.15
         }
       ]
     };
@@ -145,7 +169,7 @@
         },
         scales: {
           y: {
-            beginAtZero: true,
+            beginAtZero: false,
             title: {
               display: true,
               text: 'Price (₽)'
