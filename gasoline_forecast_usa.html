@@ -65,25 +65,13 @@
 
   <div class="card">
     <h1>USA — Gasoline Price Forecast (2025–2029)</h1>
-    <div class="price">Forecast for 2025: ≈ $0.921</div>
+    <div class="price" id="forecast2025">Forecast for 2025: ...</div>
 
     <canvas id="gasolineChart" width="600" height="300"></canvas>
 
-    <div class="formula">
-      📌 Linear regression formula used:<br>
-      <code>y = 0.0165 * x - 32.754</code>
-    </div>
+    <div class="formula" id="regressionFormula"></div>
 
-    <div class="forecast">
-      📅 Forecasted values:
-      <ul>
-        <li>2025: <b>$0.921</b></li>
-        <li>2026: <b>$0.938</b></li>
-        <li>2027: <b>$0.955</b></li>
-        <li>2028: <b>$0.972</b></li>
-        <li>2029: <b>$0.989</b></li>
-      </ul>
-    </div>
+    <div class="forecast" id="forecastList"></div>
 
     <div class="explanation">
       🔍 How does it work?<br>
@@ -93,8 +81,6 @@
   </div>
 
   <script>
-    const ctx = document.getElementById('gasolineChart').getContext('2d');
-
     const years = [
       2004, 2005, 2006, 2007, 2008, 2009, 2010,
       2011, 2012, 2013, 2014, 2015, 2016, 2017,
@@ -108,8 +94,44 @@
       0.62, 0.67, 0.58, 0.87, 0.85, 0.83, 0.80
     ];
 
-    const regression = years.map(year => parseFloat((0.0165 * year - 32.754).toFixed(3)));
+    // 1. Compute regression
+    const x_vals = years.slice(0, 21);
+    const y_vals = actualPrices;
 
+    const meanX = x_vals.reduce((a, b) => a + b, 0) / x_vals.length;
+    const meanY = y_vals.reduce((a, b) => a + b, 0) / y_vals.length;
+
+    let num = 0, den = 0;
+    for (let i = 0; i < x_vals.length; i++) {
+      num += (x_vals[i] - meanX) * (y_vals[i] - meanY);
+      den += (x_vals[i] - meanX) ** 2;
+    }
+
+    const slope = num / den;
+    const intercept = meanY - slope * meanX;
+
+    // 2. Forecast
+    const regression = years.map(year => parseFloat((slope * year + intercept).toFixed(3)));
+
+    const forecast = regression.slice(21).map((value, i) => ({
+      year: years[21 + i],
+      price: value
+    }));
+
+    // 3. Show values
+    document.getElementById("forecast2025").innerText =
+      `Forecast for 2025: ≈ $${forecast[0].price.toFixed(3)}`;
+
+    document.getElementById("regressionFormula").innerHTML =
+      `📌 Linear regression formula used:<br><code>y = ${slope.toFixed(4)} * x + (${intercept.toFixed(4)})</code>`;
+
+    document.getElementById("forecastList").innerHTML =
+      "📅 Forecasted values:<ul>" +
+      forecast.map(d => `<li>${d.year}: <b>$${d.price.toFixed(3)}</b></li>`).join("") +
+      "</ul>";
+
+    // 4. Chart
+    const ctx = document.getElementById('gasolineChart').getContext('2d');
     const data = {
       labels: years,
       datasets: [
@@ -134,35 +156,25 @@
       ]
     };
 
-    const config = {
+    new Chart(ctx, {
       type: 'line',
       data: data,
       options: {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'bottom'
-          }
+          legend: { position: 'bottom' }
         },
         scales: {
           y: {
             beginAtZero: false,
-            title: {
-              display: true,
-              text: 'Price (USD)'
-            }
+            title: { display: true, text: 'Price (USD)' }
           },
           x: {
-            title: {
-              display: true,
-              text: 'Year'
-            }
+            title: { display: true, text: 'Year' }
           }
         }
       }
-    };
-
-    new Chart(ctx, config);
+    });
   </script>
 </body>
 </html>
