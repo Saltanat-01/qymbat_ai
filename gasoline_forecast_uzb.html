@@ -65,36 +65,25 @@
 
   <div class="card">
     <h1>Uzbekistan — Gasoline Price Forecast (2025–2029)</h1>
-    <div class="price">Forecast for 2025: ≈ 11,319 UZS</div>
+    <div class="price" id="forecast2025">Forecast for 2025: ...</div>
 
     <canvas id="gasolineChart" width="600" height="300"></canvas>
 
     <div class="formula">
       📌 Linear regression formula used:<br>
-      <code>y = 474.31 * x - 945638.9</code>
+      <code>y = 532.27 × x – 1,067,103.36</code>
     </div>
 
-    <div class="forecast">
-      📅 Forecasted values:
-      <ul>
-        <li>2025: <b>11,319 UZS</b></li>
-        <li>2026: <b>11,794 UZS</b></li>
-        <li>2027: <b>12,268 UZS</b></li>
-        <li>2028: <b>12,743 UZS</b></li>
-        <li>2029: <b>13,217 UZS</b></li>
-      </ul>
-    </div>
+    <div class="forecast" id="forecastList"></div>
 
     <div class="explanation">
       🔍 How does it work?<br>
-      We use the <b>least squares method</b> to build a straight line that best fits the actual data. <br>
-      By substituting <code>x = 2025...2029</code> into the equation, we obtain predicted prices for each year.
+      We use the <b>least squares method</b> to build a regression line that best fits the actual data.<br>
+      By substituting <code>x = 2025...2029</code> into the equation, we get predicted prices.
     </div>
   </div>
 
   <script>
-    const ctx = document.getElementById('gasolineChart').getContext('2d');
-
     const years = [
       2004, 2005, 2006, 2007, 2008, 2009, 2010,
       2011, 2012, 2013, 2014, 2015, 2016, 2017,
@@ -105,17 +94,42 @@
     const actualPrices = [
       315, 375, 1036, 925, 1130, 1150, 1555,
       1745, 1770, 1810, 2210, 2235, 3000, 4300,
-      4500, 5800, 7190, 9442, 10069, 10500, 10754
+      4500, 5800, 7190, 9442, 10069, 10500, 10754,
+      null, null, null, null, null
     ];
 
-    const regression = years.map(year => parseFloat((474.31 * year - 945638.9).toFixed(0)));
+    // 🔢 Fixed slope and intercept
+    const slope = 532.27;
+    const intercept = -1067103.36;
 
+    // 🔮 Forecast calculation
+    const regression = years.map(year => {
+      const predicted = slope * year + intercept;
+      return Math.max(0, parseFloat(predicted.toFixed(0)));
+    });
+
+    const forecastData = regression.slice(21).map((value, idx) => ({
+      year: years[21 + idx],
+      price: value
+    }));
+
+    // 📌 Show forecast in HTML
+    document.getElementById("forecast2025").innerText =
+      `Forecast for 2025: ≈ ${forecastData[0].price.toLocaleString()} UZS`;
+
+    document.getElementById("forecastList").innerHTML =
+      "📅 Forecasted values:<ul>" +
+      forecastData.map(d => `<li>${d.year}: <b>${d.price.toLocaleString()} UZS</b></li>`).join("") +
+      "</ul>";
+
+    // 📈 Chart
+    const ctx = document.getElementById('gasolineChart').getContext('2d');
     const data = {
       labels: years,
       datasets: [
         {
           label: 'Historical Gasoline Prices (Uzbekistan)',
-          data: [...actualPrices, null, null, null, null, null],
+          data: actualPrices,
           borderColor: '#4e73df',
           backgroundColor: 'rgba(78, 115, 223, 0.1)',
           fill: true,
